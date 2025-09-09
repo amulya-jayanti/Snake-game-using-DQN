@@ -1,55 +1,61 @@
-# Snake-game
-🐍 Snake Game AI using Deep Q-Learning\
-This project is an implementation of the classic Snake Game with an AI agent trained using Deep Q-Learning (DQN) in a custom-built environment created using pygame. The AI learns to play the game by maximizing its score through trial and error — no hard-coded logic, just pure reinforcement learning.
+# Snake Game AI using Deep Q-Learning
 
-🚀 Features
-- Fully self-made Snake game environment using Pygame
-- Deep Q-Network (DQN) implementation with PyTorch
-- Short-term and long-term memory training
-- Epsilon-greedy strategy for exploration vs. exploitation
-- Game loop with dynamic plotting of scores
+This project is an implementation of the classic Snake Game where an AI agent learns to play using **Deep Q-Learning (DQN)**. The game environment is custom-built with **Pygame**, and the AI is trained using **PyTorch**. The agent learns to maximize its score through trial and error, without any hard-coded logic, demonstrating the power of reinforcement learning.
 
-🧠 Reinforcement Learning Setup
+---
 
-State Space (11-dimensional): Danger straight, right, left
+### **Key Features**
 
-Current direction (left, right, up, down)
+* **Custom Pygame Environment:** A fully self-made Snake game environment.
+* **Deep Q-Network (DQN):** A robust implementation of a DQN using PyTorch.
+* **Reinforcement Learning:** The AI learns through an **epsilon-greedy strategy** to balance exploration and exploitation.
+* **Dynamic Plotting:** The training process includes a real-time plot of scores and average scores over episodes.
 
-Relative location of food (left, right, up, down)
+---
 
-Action Space (3 actions): [Straight, Right, Left]
+### **Reinforcement Learning Setup**
 
-Reward Function:
+#### **State Space**
+The state is represented by an 11-dimensional vector that provides the AI with essential information about the game environment:
+* **Danger:** Whether there is an immediate danger (wall or body) to the straight, right, or left of the snake's head.
+* **Current Direction:** A one-hot encoded vector indicating the snake's current direction (up, down, left, right).
+* **Food Location:** A one-hot encoded vector indicating the relative location of the food (up, down, left, right).
 
-+10 for eating food
+#### **Action Space**
+The AI can choose from three possible actions at each step:
+* `[Straight, Right, Left]`
 
--10 for collision/game over
+#### **Reward Function**
+The agent is guided by a simple reward structure:
+* **+10:** For eating food.
+* **-10:** For a collision or game over.
+* **0:** For a regular move.
 
-0 for regular move
+---
 
-Agent: Uses a Deep Q-Network (Q-Learning with a neural network approximator)
+### **Training Progress**
 
-🕹️ Game Environment
+Over time, the agent's performance improves, with its scores increasing and collisions becoming less frequent. The training curve plots both the game score and average score over episodes, providing a clear visual representation of the learning process.
 
-- Grid-based game built with Pygame
-- Snake movement handled based on the agent’s action
-- Random food placement avoiding collision with the snake
-- Game ends on wall or self-collision
+![Training Progress Plot](https://raw.githubusercontent.com/amulya-jayanti/Snake-game/main/SnakeGameAI-video.mov)
 
-📦 Dependencies: pygame, numpy, torch, matplotlib
+---
 
-📈 Training Progress:
+### **Dependencies**
 
-The agent learns over time with increasing scores and fewer collisions. The training curve plots both the game score and average score over episodes.
+This project requires the following libraries:
+* `pygame`
+* `numpy`
+* `torch`
+* `matplotlib`
 
-💡 Inspiration:
+---
 
-Inspired by Sentdex's tutorial on Snake AI with Pygame and PyTorch, with custom improvements including:
+### **Inspiration**
 
-Modified neural network structure
+This project was inspired by Sentdex's tutorial on Snake AI. It includes several custom improvements:
 
-More efficient reward structure
-
-Self-made Pygame environment
-
-Cleaner action-state management
+* A modified neural network structure.
+* A more efficient reward system.
+* A self-made Pygame environment for greater control.
+* Cleaner action-state management.
